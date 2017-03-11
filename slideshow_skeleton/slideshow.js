@@ -2,7 +2,7 @@
 // Students: follow the instructions below:
 
 // TODO: Put links to our images in this image array.
-var images = ["github.png", "gracehoppertocat.jpg", "jetpacktocat.png"];
+var images = ["HTML5.png", "js.png", "github.png", "CSS.png"];
 
 // Variable showImage will hold the setInterval when we start the slideshow
 var showImage;
@@ -10,11 +10,13 @@ var showImage;
 // Count will keep track of the index of the currently displaying picture.
 var count = 0;
 
-// TODO: Use jQuery to run "startSlideshow" when we click the "start" button.
-$('#start').click(
+function randomNumber() {
+    number = Math.floor(Math.random() * images.length);
+    return number;
+}
 
-    startSlideshow
-)
+// TODO: Use jQuery to run "startSlideshow" when we click the "start" button.
+$('#start').click(startSlideshow);
 
 
 // TODO: Use jQuery to run "stopSlideshow" when we click the "stop" button.
@@ -28,10 +30,7 @@ function displayImage() {
 
 function nextImage() {
 
-    // TODO: Increment the count by 1.
-    count++;
-
-
+    count = randomNumber();
 
     // TODO: Show the loading gif in the "image-holder" div.
     $("#image-holder").html('<img src="loading.gif" width="400px">');
@@ -40,11 +39,6 @@ function nextImage() {
 
     setTimeout(displayImage, 1000);
     // TODO: If the count is the same as the length of the image array, reset the count to 0.
-    if (count === images.length) {
-        count = 0;
-    }
-
-
 }
 
 function startSlideshow() {
